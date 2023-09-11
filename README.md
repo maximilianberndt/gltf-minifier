@@ -3,7 +3,7 @@
 Based on https://github.com/donmccurdy/glTF-Transform
 
 
-## Howto
+## Use
 
 1. Add glb in model folder
 2. Update MODEL_URL in `index.js`
