@@ -16,31 +16,27 @@ const io = new NodeIO()
         'draco3d.encoder': await draco3d.createEncoderModule(), // Optional.
     });
 
-const transform = async () => {
-    // Read from URL.
-    const document = await io.read(`model/${MODEL_URL}.${EXTENSION}`);
+// Read from URL.
+const document = await io.read(`model/${MODEL_URL}.${EXTENSION}`);
 
-    await document.transform(
-        // Losslessly resample animation frames.
-        resample(),
-        // Remove unused nodes, textures, or other data.
-        prune(),
-        // Remove duplicate vertex or texture data, if any.
-        dedup(),
-        // Index Primitives and (optionally) merge similar vertices.
-        weld({ tolerance: 0.001, toleranceNormal: 0.5 }),
-        // Compress mesh geometry with Draco.
-        draco(),
-        // Convert textures to WebP (Requires glTF Transform v3 and Node.js).
-        textureCompress({
-            encoder: sharp,
-            targetFormat: 'webp',
-            resize: [1024, 1024],
-        }),
-    );
-    
-    // Create optimized file
-    await io.write(`model/${MODEL_URL}_min.${EXTENSION}`, document);
-} 
+await document.transform(
+    // Losslessly resample animation frames.
+    resample(),
+    // Remove unused nodes, textures, or other data.
+    prune(),
+    // Remove duplicate vertex or texture data, if any.
+    dedup(),
+    // Index Primitives and (optionally) merge similar vertices.
+    weld({ tolerance: 0.001, toleranceNormal: 0.5 }),
+    // Compress mesh geometry with Draco.
+    draco(),
+    // Convert textures to WebP (Requires glTF Transform v3 and Node.js).
+    textureCompress({
+        encoder: sharp,
+        targetFormat: 'webp',
+        resize: [1024, 1024],
+    }),
+);
 
-transform()
+// Create optimized file
+await io.write(`model/${MODEL_URL}_min.${EXTENSION}`, document);
