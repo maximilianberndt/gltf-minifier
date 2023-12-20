@@ -197,6 +197,11 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+meshoptimizer@^0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/meshoptimizer/-/meshoptimizer-0.20.0.tgz#890eaeafa2b5730a0c58770fdf3b1fe77b746bf5"
+  integrity sha512-olcJ1q+YVnjroRJpCL1Dj5aZxr2JMr2hRutMUwhuHZvpAL7SIZgOT6eMlFF4TbBGSR89tawE/gqB79J/LrW/Nw==
+
 mimic-response@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/mimic-response/-/mimic-response-3.1.0.tgz#2d1d59af9c1b129815accc2c46a022a5ce1fa3c9"
